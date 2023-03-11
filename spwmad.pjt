@@ -1,0 +1,52 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="F:\dsp28335\jx\jx\spwmad\"
+ProjectType=Executable
+CPUFamily=TMS320C28XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="..\..\DSP2833x_common\source\DSP2833x_Adc.c"
+Source="..\..\DSP2833x_common\source\DSP2833x_ADC_cal.asm"
+Source="..\..\DSP2833x_common\source\DSP2833x_CodeStartBranch.asm"
+Source="..\..\DSP2833x_common\source\DSP2833x_DefaultIsr.c"
+Source="..\..\DSP2833x_common\source\DSP2833x_EPwm.c"
+Source="..\..\DSP2833x_common\source\DSP2833x_PieCtrl.c"
+Source="..\..\DSP2833x_common\source\DSP2833x_PieVect.c"
+Source="..\..\DSP2833x_common\source\DSP2833x_SysCtrl.c"
+Source="..\..\DSP2833x_common\source\DSP2833x_usDelay.asm"
+Source="..\..\DSP2833x_headers\source\DSP2833x_GlobalVariableDefs.c"
+Source="spwmad.c"
+Source="..\..\DSP2833x_common\cmd\28335_RAM_lnk.cmd"
+Source="..\..\DSP2833x_headers\cmd\DSP2833x_Headers_nonBIOS.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -pdsw225 -fr"$(Proj_dir)\Debug" -i"..\..\DSP2833x_headers\include" -i"..\..\DSP2833x_common\include" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 --float_support=fpu32
+
+["Compiler" Settings: "Release"]
+Options=-pdsw225 -o3 -fr"$(Proj_dir)\Release" -d"LARGE_MODEL" -ml -v28
+
+["Linker" Settings: "Debug"]
+Options=-c -m".\Debug\spwmad.map" -o".\Debug\spwmad.out" -w -x -l"rts2800_fpu32.lib"
+
+["Linker" Settings: "Release"]
+Options=-c -m".\Release\spwmad.map" -o".\Release\spwmad.out" -w -x
+
+["..\..\DSP2833x_common\cmd\28335_RAM_lnk.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["..\..\DSP2833x_common\cmd\28335_RAM_lnk.cmd" Settings: "Release"]
+LinkOrder=1
+
+["..\..\DSP2833x_headers\cmd\DSP2833x_Headers_nonBIOS.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["..\..\DSP2833x_headers\cmd\DSP2833x_Headers_nonBIOS.cmd" Settings: "Release"]
+LinkOrder=1
+
